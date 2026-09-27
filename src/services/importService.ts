@@ -1,3 +1,5 @@
+import { apiUrl } from "./api";
+
 export const importService = {
   async upload(file: File) {
     const form = new FormData();
@@ -5,7 +7,7 @@ export const importService = {
     form.append("file", file);
 
     const response = await fetch(
-      "/api/transactions/import-csv.php",
+      apiUrl("/transactions/import-csv.php"),
       {
         method: "POST",
         credentials: "include",
