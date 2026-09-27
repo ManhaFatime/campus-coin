@@ -42,6 +42,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { resolveApiAssetUrl } from "@/services/api";
 
 import {
   Select,
@@ -902,7 +903,7 @@ export function AdminUsersPage({
     user: AdminUserRecord,
   ) {
     const imageUrl =
-      userImageUrl(user);
+      resolveApiAssetUrl(userImageUrl(user));
 
     return (
       <span className="admin-user-avatar relative overflow-hidden">

@@ -24,7 +24,11 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-import { apiRequest } from "@/services/api";
+import {
+  apiRequest,
+  apiUrl,
+  resolveApiAssetUrl,
+} from "@/services/api";
 
 import {
   FontSizeControl,
@@ -293,7 +297,7 @@ export function ProfilePage({
 
       const httpResponse =
         await fetch(
-          "/api/profile/upload-image.php",
+          apiUrl("/profile/upload-image.php"),
           {
             method: "POST",
             credentials: "include",
@@ -401,7 +405,9 @@ export function ProfilePage({
                 {profile.profile_image_url && (
                   <img
                     src={
-                      profile.profile_image_url
+                      resolveApiAssetUrl(
+                        profile.profile_image_url,
+                      ) ?? undefined
                     }
                     alt={`${profile.name} profile`}
                     className="absolute inset-0 size-full object-cover"

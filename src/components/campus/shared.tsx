@@ -101,7 +101,10 @@ import {
 
 
 
-import { apiRequest } from "@/services/api";
+import {
+  apiRequest,
+  resolveApiAssetUrl,
+} from "@/services/api";
 
 
 
@@ -2267,7 +2270,7 @@ function WorkspaceAvatar({
 
         <img
 
-          src={imageUrl}
+          src={resolveApiAssetUrl(imageUrl) ?? undefined}
 
           alt={`${name} profile`}
 
